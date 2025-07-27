@@ -40,6 +40,31 @@
         opacity: 1;
         transform: translateY(0);
     }
+     .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
     .modal-backdrop {
         display: none;
         position: fixed;
@@ -354,6 +379,19 @@
                 </div>
             </div>
         </section>
+
+  <!-- Certifications Section -->
+         <section id="certifications" class="py-20 bg-stone-100 dark:bg-stone-900 section-fade-in transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-2 text-stone-800 dark:text-stone-100">Certifications</h2>
+            <p class="text-center text-stone-500 dark:text-stone-400 mb-12">Professional certifications and achievements that validate my skills.</p>
+            
+            <!-- Dynamic Certifications Grid -->
+            <div id="certificationsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Cards will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
         
         <!-- Platforms Section -->
         <section id="platforms" class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
@@ -494,6 +532,56 @@
                 observer.observe(section);
             });
 
+             const certificationsData = [
+            {
+                title: "AWS Cloud Practitioner",
+                issuer: "Amazon Web Services",
+                description: "Foundational understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.",
+                issueDate: "March 2024",
+                certificateUrl: "#",
+                iconColor: "teal"
+            },
+            {
+                title: "React Developer",
+                issuer: "Meta (Facebook)",
+                description: "Comprehensive certification covering React fundamentals, hooks, state management, and modern development practices.",
+                issueDate: "January 2024",
+                certificateUrl: "#",
+                iconColor: "blue"
+            },
+            {
+                title: "Java Programming",
+                issuer: "Oracle",
+                description: "Oracle Certified Associate Java SE certification demonstrating proficiency in Java programming fundamentals.",
+                issueDate: "December 2023",
+                certificateUrl: "#",
+                iconColor: "orange"
+            },
+            {
+                title: "MongoDB Developer",
+                issuer: "MongoDB Inc.",
+                description: "Professional certification in MongoDB database design, development, and administration best practices.",
+                issueDate: "November 2023",
+                certificateUrl: "#",
+                iconColor: "green"
+            },
+            {
+                title: "Git & Version Control",
+                issuer: "GitHub",
+                description: "Advanced Git workflows, collaboration strategies, and version control best practices for team development.",
+                issueDate: "October 2023",
+                certificateUrl: "#",
+                iconColor: "purple"
+            },
+            {
+                title: "Agile & Scrum",
+                issuer: "Scrum Alliance",
+                description: "Certified Scrum Master with expertise in Agile methodologies, sprint planning, and team collaboration.",
+                issueDate: "September 2023",
+                certificateUrl: "#",
+                iconColor: "red"
+            }
+        ];
             // Project Data
             const projects = [
                 {
