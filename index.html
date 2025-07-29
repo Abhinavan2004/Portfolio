@@ -9,18 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutrals -->
-    <!-- Application Structure Plan: A single-page, vertical scrolling narrative. The structure follows the logical flow of a professional introduction: About -> Education -> Skills -> Experience -> Projects -> Platforms -> Contact. This linear journey is intuitive for recruiters and hiring managers, allowing them to progressively build a comprehensive picture of the developer. A fixed navigation bar provides direct access to any section, respecting user agency. Key interactions include modal pop-ups for project details to keep the main view uncluttered, and subtle scroll-based animations to enhance engagement without being distracting. This structure was chosen because it's a proven, effective format for personal portfolios that balances storytelling with scannability. -->
-    <!-- Visualization & Content Choices: 
-        - About Me: Goal: Inform/Brand. Method: Large text, photo. Interaction: On-load animations. Justification: Creates a strong first impression.
-        - Education/Experience: Goal: Organize/Inform. Method: HTML/CSS vertical timeline. Interaction: Hover effects. Justification: Visually represents career progression chronologically.
-        - Tech Stacks: Goal: Compare/Inform. Method: Categorized icon grid. Interaction: Hover animations. Justification: More engaging and scannable than a simple list.
-        - Projects: Goal: Showcase/Detail. Method: Card grid with a modal for details. Interaction: Click to open modal. Justification: Presents a clean overview while allowing for in-depth exploration without leaving the page.
-        - Platforms: Goal: Connect/Verify. Method: Logo links. Interaction: Standard link behavior. Justification: Provides quick, verifiable links to professional profiles.
-        - Contact: Goal: Connect. Method: HTML form. Interaction: JS-handled submission to show a success message. Justification: Demonstrates understanding of front-end form handling and provides a clear call to action.
-        - Library/Method: All visuals are built with HTML and Tailwind CSS. All interactions are handled with vanilla JavaScript.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -213,7 +201,6 @@
 
 <body class="antialiased">
 
-    <!-- Header & Navigation -->
     <header id="header"
         class="bg-slate-100/80 backdrop-blur-md fixed top-0 left-0 right-0 z-30 border-b border-slate-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -234,7 +221,7 @@
                     <svg id="moon-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
-                            d="M9.525 3.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM12 6a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V6.75A.75.75 0 0112 6zM14.475 3.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM17.25 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM20.25 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM22.5 12a.75.75 0 01-.75.75H19.5a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM9.525 20.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM14.475 20.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM6.75 12a.75.75 0 01-.75.75H3.75a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM3 12a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h2.25A.75.75 0 013 12zM5.25 12a.75.75 0 01-.75.75H2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM12 9a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V9.75A.75.75 0 0112 9zM12 12a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V12.75A.75.75 0 0112 12zM12 14.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75z" />
+                            d="M9.525 3.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM12 6a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V6.75A.75.75 0 0112 6zM14.475 3.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM17.25 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM20.25 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM22.5 12a.75.75 0 01-.75.75H19.5a.75.75 0 010-1.5h2.25A.75.75 0 0122.5 12zM9.525 20.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM14.475 20.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM6.75 12a.75.75 0 01-.75.75H3.75a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM3 12a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h2.25A.75.75 0 013 12zM5.25 12a.75.75 0 01-.75.75H2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM12 9a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V9.75A.75.75 0 0112 9zM12 12a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V12.75A.75.75 0 0112 12zM12 14.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75z" />
                     </svg>
                 </button>
             </nav>
@@ -246,7 +233,6 @@
                 </svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-slate-100 dark:bg-slate-900">
             <a href="#about"
                 class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">About</a>
@@ -264,7 +250,6 @@
     </header>
 
     <main>
-        <!-- Home Section -->
         <section id="home"
             class="min-h-screen flex items-center bg-slate-100 dark:bg-slate-900 transition-colors duration-300 mt-10">
             <div class="container mx-auto px-6 py-20 flex flex-col items-center text-center">
@@ -295,7 +280,6 @@
             </div>
         </section>
 
-        <!-- About Me Section -->
         <section id="about" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">About Me</h2>
@@ -313,7 +297,6 @@
             </div>
         </section>
 
-        <!-- Education Section -->
         <section id="education"
             class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
@@ -322,7 +305,6 @@
                     qualifications.</p>
                 <div class="relative max-w-2xl mx-auto">
                     <div class="absolute left-1/2 w-0.5 h-full bg-slate-300 dark:bg-slate-700"></div>
-                    <!-- B.Tech -->
                     <div class="mb-8 flex justify-between items-center w-full">
                         <div class="order-1 w-5/12"></div>
                         <div
@@ -331,13 +313,13 @@
                         </div>
                         <div
                             class="order-1 bg-white dark:bg-slate-800 rounded-lg shadow-xl w-5/12 px-6 py-4 transform hover:-translate-y-1 transition-transform duration-300">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xl">Bachelor of Technology</h3>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xl">Bachelor of Technology
+                            </h3>
                             <p class="text-sm font-medium text-sky-600">Information Technology | 2022 - 2026</p>
                             <p class="text-sm text-slate-600 dark:text-slate-300">Shri Ramdeobaba College of Engineering
                                 and Management, Nagpur</p>
                         </div>
                     </div>
-                    <!-- 12th Grade -->
                     <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
                         <div class="order-1 w-5/12"></div>
                         <div
@@ -346,13 +328,12 @@
                         </div>
                         <div
                             class="order-1 bg-white dark:bg-slate-800 rounded-lg shadow-xl w-5/12 px-6 py-4 transform hover:-translate-y-1 transition-transform duration-300">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xl">Senior Secondary (12th)
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Senior Secondary (12th)
                             </h3>
                             <p class="text-sm font-medium text-sky-600">Science Stream | 2022</p>
                             <p class="text-sm text-slate-600 dark:text-slate-300">Maharishi Public School</p>
                         </div>
                     </div>
-                    <!-- 10th Grade -->
                     <div class="mb-8 flex justify-between items-center w-full">
                         <div class="order-1 w-5/12"></div>
                         <div
@@ -361,7 +342,7 @@
                         </div>
                         <div
                             class="order-1 bg-white dark:bg-slate-800 rounded-lg shadow-xl w-5/12 px-6 py-4 transform hover:-translate-y-1 transition-transform duration-300">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xl">Secondary (10th)</h3>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Secondary (10th)</h3>
                             <p class="text-sm font-medium text-sky-600">2020</p>
                             <p class="text-sm text-slate-600 dark:text-slate-300">Little World School</p>
                         </div>
@@ -370,14 +351,12 @@
             </div>
         </section>
 
-        <!-- Tech Stacks Section -->
         <section id="skills" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">My Tech Stack</h2>
                 <p class="text-center text-slate-500 dark:text-slate-400 mb-12">Technologies and tools I use to build
                     things.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <!-- Frontend -->
                     <div
                         class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Frontend</h3>
@@ -392,7 +371,6 @@
                         </div>
                     </div>
 
-                    <!-- Backend -->
                     <div
                         class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Backend</h3>
@@ -407,7 +385,6 @@
                         </div>
                     </div>
 
-                    <!-- Databases & Cloud -->
                     <div
                         class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Databases & Cloud</h3>
@@ -418,7 +395,6 @@
                         </div>
                     </div>
 
-                    <!-- Proficiencies -->
                     <div
                         class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Proficiencies</h3>
@@ -441,7 +417,6 @@
                         </div>
                     </div>
 
-                    <!-- Tools & Platforms -->
                     <div
                         class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Tools & Platforms</h3>
@@ -462,7 +437,6 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience"
             class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
@@ -488,6 +462,7 @@
                                 organic visibility.</li>
                             <li>Integrated AWS for hosting and deployment, enhancing site uptime and scalability</li>
 
+                        </ul>
                     </div>
                     <div
                         class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
@@ -511,19 +486,16 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Projects</h2>
                 <p class="text-center text-slate-500 dark:text-slate-400 mb-12">A selection of my work. Click to learn
                     more.</p>
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Projects will be dynamically inserted here -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
         <section id="certifications"
             class="py-20 bg-stone-100 dark:bg-stone-900 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
@@ -531,15 +503,12 @@
                 <p class="text-center text-stone-500 dark:text-stone-400 mb-12">Professional certifications and
                     achievements that validate my skills.</p>
 
-                <!-- Dynamic Certifications Grid -->
                 <div id="certificationsGrid"
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <!-- Cards will be dynamically generated here -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Platforms Section -->
         <section id="platforms"
             class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
@@ -567,11 +536,11 @@
             </div>
         </section>
 
-        <!-- Contact Section
-        <section id="contact" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
+        <!-- <section id="contact" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Get In Touch</h2>
-                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">Have a project in mind or just want to say hi? Feel free to reach out.</p>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">Have a project in mind or just want to
+                    say hi? Feel free to reach out.</p>
                 <div class="max-w-2xl mx-auto">
                     <form id="contact-form" class="space-y-6">
                         <div>
@@ -591,242 +560,263 @@
                                 Send Message
                             </button>
                         </div>
-                    </form>
-                    <div id="form-success" class="hidden mt-6 text-center p-4 bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 rounded-md">
+                    </form> -->
+                    <!-- <div id="form-success"
+                        class="hidden mt-6 text-center p-4 bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 rounded-md">
                         Thank you for your message! I'll get back to you soon.
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div>
             </div>
-        </section>
-    </main> -->
+        </section> -->
+    </main>
 
-        <!-- Project Modal -->
-        <div id="project-modal" class="modal-backdrop">
-            <div id="modal-content-wrapper"
-                class="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-11/12 max-w-4xl relative modal-content text-slate-800 dark:text-slate-100">
-                <!-- Content will be injected here -->
+    <div id="project-modal" class="modal-backdrop">
+        <div id="modal-content-wrapper"
+            class="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-11/12 max-w-4xl relative modal-content text-slate-800 dark:text-slate-100">
             </div>
+    </div>
+
+    <button id="scroll-to-top-btn"
+        class="fixed bottom-8 right-8 bg-sky-600 text-white p-3 rounded-full shadow-lg hidden hover:bg-sky-700 transition-colors duration-300 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+            </path>
+        </svg>
+    </button>
+
+    <footer
+        class="bg-slate-800 dark:bg-slate-950 text-slate-300 dark:text-slate-400 py-6 transition-colors duration-300">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Abhinav Anpan. All rights reserved.</p>
         </div>
+    </footer>
 
-        <!-- Scroll-to-top button -->
-        <button id="scroll-to-top-btn"
-            class="fixed bottom-8 right-8 bg-sky-600 text-white p-3 rounded-full shadow-lg hidden hover:bg-sky-700 transition-colors duration-300 z-50">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
-                </path>
-            </svg>
-        </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlElement = document.documentElement;
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
 
-        <footer
-            class="bg-slate-800 dark:bg-slate-950 text-slate-300 dark:text-slate-400 py-6 transition-colors duration-300">
-            <div class="container mx-auto px-6 text-center">
-                <p>&copy; 2025 Abhinav Anpan. All rights reserved.</p>
-            </div>
-        </footer>
+            // Initialize theme from localStorage or default to light
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                htmlElement.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                document.body.classList.add('dark'); // Apply dark class to body for direct styling
+            } else {
+                htmlElement.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                document.body.classList.remove('dark'); // Ensure body is not dark
+            }
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const htmlElement = document.documentElement;
-                const themeToggleBtn = document.getElementById('theme-toggle');
-                const sunIcon = document.getElementById('sun-icon');
-                const moonIcon = document.getElementById('moon-icon');
-                const mobileMenuButton = document.getElementById('mobile-menu-button');
-                const mobileMenu = document.getElementById('mobile-menu');
-                const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-
-                // Initialize theme from localStorage or default to light
-                const currentTheme = localStorage.getItem('theme');
-                if (currentTheme === 'dark') {
-                    htmlElement.classList.add('dark');
+            // Theme toggle functionality
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                document.body.classList.toggle('dark'); // Toggle dark class on body
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
                     sunIcon.classList.add('hidden');
                     moonIcon.classList.remove('hidden');
-                    document.body.classList.add('dark'); // Apply dark class to body for direct styling
                 } else {
-                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
                     sunIcon.classList.remove('hidden');
                     moonIcon.classList.add('hidden');
-                    document.body.classList.remove('dark'); // Ensure body is not dark
                 }
+            });
 
-                // Theme toggle functionality
-                themeToggleBtn.addEventListener('click', () => {
-                    htmlElement.classList.toggle('dark');
-                    document.body.classList.toggle('dark'); // Toggle dark class on body
-                    if (htmlElement.classList.contains('dark')) {
-                        localStorage.setItem('theme', 'dark');
-                        sunIcon.classList.add('hidden');
-                        moonIcon.classList.remove('hidden');
-                    } else {
-                        localStorage.setItem('theme', 'light');
-                        sunIcon.classList.remove('hidden');
-                        moonIcon.classList.add('hidden');
+            // Mobile Menu Toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Intersection Observer for section fade-in animations
+            const sections = document.querySelectorAll('.section-fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
+            }, { threshold: 0.1 });
 
-                // Mobile Menu Toggle
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
 
-                // Close mobile menu when a link is clicked
-                document.querySelectorAll('#mobile-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-
-                // Intersection Observer for section fade-in animations
-                const sections = document.querySelectorAll('.section-fade-in');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                sections.forEach(section => {
-                    observer.observe(section);
-                });
-
-                const certificationsData = [
-                    {
-                        title: "AWS Cloud Practitioner",
-                        issuer: "Amazon Web Services",
-                        description: "Foundational understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.",
-                        issueDate: "March 2024",
-                        certificateUrl: "#",
-                        iconColor: "teal"
-                    },
-                    {
-                        title: "React Developer",
-                        issuer: "Meta (Facebook)",
-                        description: "Comprehensive certification covering React fundamentals, hooks, state management, and modern development practices.",
-                        issueDate: "January 2024",
-                        certificateUrl: "#",
-                        iconColor: "blue"
-                    },
-                    {
-                        title: "Java Programming",
-                        issuer: "Oracle",
-                        description: "Oracle Certified Associate Java SE certification demonstrating proficiency in Java programming fundamentals.",
-                        issueDate: "December 2023",
-                        certificateUrl: "#",
-                        iconColor: "orange"
-                    },
-                    {
-                        title: "MongoDB Developer",
-                        issuer: "MongoDB Inc.",
-                        description: "Professional certification in MongoDB database design, development, and administration best practices.",
-                        issueDate: "November 2023",
-                        certificateUrl: "#",
-                        iconColor: "green"
-                    },
-                    {
-                        title: "Git & Version Control",
-                        issuer: "GitHub",
-                        description: "Advanced Git workflows, collaboration strategies, and version control best practices for team development.",
-                        issueDate: "October 2023",
-                        certificateUrl: "#",
-                        iconColor: "purple"
-                    },
-                    {
-                        title: "Agile & Scrum",
-                        issuer: "Scrum Alliance",
-                        description: "Certified Scrum Master with expertise in Agile methodologies, sprint planning, and team collaboration.",
-                        issueDate: "September 2023",
-                        certificateUrl: "#",
-                        iconColor: "red"
-                    }
-                ];
-                // Project Data
-                const projects = [
-                    {
-                        id: 1,
-                        title: ' TravelSphere – Travel and Tourism Management System',
-                        short_desc: 'A Java-based travel management system with user authentication, package booking, and hotel reservation features using Swing and MySQL.',
-                        image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=E-commerce',
-                        motivation: 'To build a full-featured desktop system for streamlining travel and hotel bookings using core Java concepts and database integration.',
-                        process: 'Designed and built the GUI using Java Swing and AWT. Implemented JDBC connectivity to perform operations on MySQL database. Integrated user authentication, package booking, and profile management features.',
-                        technologies: ['Java', 'Swing', 'AWT', 'JDBC', 'MySQL'],
-                        challenges: 'Managing multiple screens and user states within Swing while maintaining modular code. Ensuring reliable database operations and validating user inputs across forms.',
-                        live_link: '#',
-                        github_link: 'https://github.com/Abhinavan2004/Travel_and_Tourism_Management'
-                    },
-                    {
-    id: 2,
-    title: 'Developing Secure Solutions for CPS in Healthcare Applications (Ongoing)',
-    short_desc: 'A hybrid Spring Boot + Kotlin-based prototype ensuring secure data flow in healthcare CPS using Arduino sensors and PostgreSQL.',
-    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=Healthcare+CPS',
-    motivation: 'To address privacy and integrity concerns in healthcare CPS by building a secure architecture capable of withstanding cyber threats and ensuring safe data transmission.',
-    process: 'Designed a CPS prototype integrating Arduino sensors with Kotlin apps for data collection, routed to a secure Spring Boot backend. Simulated attack vectors to test authentication, encryption, and access control layers.',
-    technologies: ['Java', 'Spring Boot', 'Kotlin', 'PostgreSQL', 'PgAdmin', 'Google Cloud Platform', 'Arduino'],
-    challenges: 'Ensuring end-to-end data security under real-time conditions, bridging IoT hardware with cloud-connected software layers, and implementing threat simulations for validation.',
-    live_link: '#',
-    github_link: 'https://github.com/Abhinavan2004/Ensuring-Securing-in-CPS-for-Healthcare-Applications'
+            const certificationsData = [
+               {
+    title: "Postman API Fundamentals Student Expert",
+    issuer: "Postman",
+    description: "Demonstrated expertise in API fundamentals including requests, collections, environment variables, and automated testing using Postman.",
+    issueDate: "July 2025",
+    certificateUrl: "https://drive.google.com/file/d/1Y1nwsTwafJQW0ZvUNX2FmohLM67fDftO/view?usp=sharing",
+    iconColor: "teal"
 },
-                    {
-                       
-    id: 3,
-    title: 'NeXoraa – Real-Time Video & Chat Application',
-    short_desc: 'A full-stack MERN app with JWT-authentication, video calling, messaging, and a responsive React UI using Tailwind CSS.',
-    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=NeXoraa+App',
-    motivation: 'To create an all-in-one communication platform with real-time video, chat, and notifications, while ensuring secure and scalable architecture.',
-    process: 'Developed user authentication with JWT, implemented one-to-one video calling using Stream Video SDK, and built a friend request + messaging system. Styled the frontend using Tailwind CSS and DaisyUI with React Router for navigation.',
-    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Stream Video SDK', 'Tailwind CSS', 'DaisyUI'],
-    challenges: 'Integrating secure real-time video calls while maintaining UI responsiveness and ensuring seamless state management across authentication and messaging modules.',
-    live_link: '#',
-    github_link: 'https://www.github.com/Abhinavan2004/NeXoraa'
-},
-{
-    id: 4,
-    title: 'TaskMate – Java-Based Desktop Task Manager',
-    short_desc: 'A Java Swing-based desktop application for task scheduling and productivity tracking with MySQL backend.',
-    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=TaskMate+App',
-    motivation: 'To streamline personal productivity by building an offline task management tool with CRUD operations and persistent storage.',
-    process: 'Built the GUI using Java Swing, implemented task creation, deadline tracking, and status updates. Connected to MySQL database for secure and persistent data handling with JDBC.',
-    technologies: ['Java', 'Swing', 'Bootstrap CSS', 'MySQL', 'JDBC', 'XAMPP'],
-    challenges: 'Designing a user-friendly and responsive GUI in Swing while ensuring real-time database sync and error-free data validation.',
-    live_link: '#',
-    github_link: 'https://github.com/Abhinavan2004/TaskMate-Java'
-},
-{
-    id: 5,
-    title: "Secret Message Encoder – Text Encryption App",
-    short_desc: "A simple Java application that encodes and decodes secret messages using basic encryption logic.",
-    image: "https://placehold.co/600x400/E2E8F0/4A5568?text=Secret+Message+Encoder",
-    motivation: "To explore basic encryption techniques and build a fun tool for encoding personal messages securely.",
-    process: "Developed a console-based Java program that allows users to input a message, apply a shift-based encoding (similar to Caesar cipher), and decode it back. Focused on clean logic, user input handling, and readable structure.",
-    technologies: ["Java", "OOP", "CLI"],
-    challenges: "Implementing error-free encoding/decoding logic while preserving character casing and ignoring special characters.",
-    live_link: "#",
-    github_link: "https://github.com/Abhinavan2004/Secret-Message-Encoder"
-},
-{
-    id: 6,
-    title: "AI Code Reviewer – Gemini-Powered Full-Stack Code Feedback Platform",
-    short_desc: "A full-stack MERN application that integrates Gemini AI API to analyze and review code in real-time.",
-    image: "https://placehold.co/600x400/E2E8F0/4A5568?text=AI+Code+Reviewer",
-    motivation: "To assist developers with intelligent, AI-powered code feedback during the development lifecycle.",
-    process: "Developed using React.js for the frontend with intuitive UI and syntax highlighting. Backend built with Node.js and Express.js to handle API requests and securely interact with Gemini AI API.",
-    technologies: ["React.js", "Node.js", "Express.js","Tailwind CSS", "Gemini AI API"],
-    challenges: "Ensuring accurate code parsing and review consistency across various languages while maintaining responsiveness and data privacy.",
-    live_link: "#",
-    github_link: "https://github.com/Abhinavan2004/AI-Code-Reviewer"
+
+                {
+    title: "React Basics",
+    issuer: "Meta (via Coursera)",
+    description: "Gained foundational knowledge of building interactive user interfaces using React, including components, props, state management, and JSX.",
+    issueDate: "Oct 2024",
+    certificateUrl: "https://drive.google.com/file/d/1kSh6KvAbqBsf2J_lHfj0_gXwzfbpZFFd/view?usp=sharing",
+    iconColor: "blue"
+}
+,
+                {
+title: "Networking Basics",
+    issuer: "Cisco (via Cisco Networking Academy)",
+    description: "Learned core networking concepts such as IP addressing, subnetting, protocols, OSI model, and basic network configuration and troubleshooting.",
+    issueDate: "Dec 2024",
+    certificateUrl: "https://drive.google.com/file/d/1dYjFyL2NTCZ_uusum2N2M-KatK4dRUu8/view?usp=sharing",
+    iconColor: "red"
+}
+,
+               {
+    title: "Introduction to Git & GitHub",
+    issuer: "Google (via Coursera)",
+    description: "Gained hands-on experience with version control using Git and GitHub, including branching, pull requests, commits, and repository collaboration.",
+    issueDate: "July 2025",
+    certificateUrl: "https://drive.google.com/file/d/1kXU-zHojciYJ-Suwde3H8efc4nshNy2c/view?usp=sharing",
+    iconColor: "blue"
+}
+,
+                {
+    title: "AWS Solutions Architecture Virtual Experience Program",
+    issuer: "Amazon Web Services (via Forage)",
+    description: "Completed a job simulation involving real-world tasks such as designing scalable cloud architectures, evaluating AWS services, and proposing secure and cost-effective cloud solutions.",
+    issueDate: "July 2025",
+    certificateUrl: "#",
+    iconColor: "orange"
 }
 
-            
-                    
-                ];
+            ];
 
-                // Populate Projects Grid
-                const projectsGrid = document.getElementById('projects-grid');
-                projects.forEach(project => {
-                    const projectCard = document.createElement('div');
-                    projectCard.className = 'bg-slate-50 dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300';
-                    projectCard.innerHTML = `
+            // Function to generate certification cards
+            const generateCertifications = () => {
+                const certificationsGrid = document.getElementById('certificationsGrid');
+                certificationsGrid.innerHTML = ''; // Clear existing content
+
+                certificationsData.forEach(cert => {
+                    const certCard = document.createElement('div');
+                    certCard.className = `bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300`;
+                    certCard.innerHTML = `
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-${cert.iconColor}-100 dark:bg-${cert.iconColor}-900 flex items-center justify-center mr-4">
+                                <span class="text-${cert.iconColor}-600 dark:text-${cert.iconColor}-200 text-2xl font-bold">&#x2713;</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">${cert.title}</h3>
+                                <p class="text-sky-600 dark:text-sky-400 text-sm">${cert.issuer}</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 mb-4">${cert.description}</p>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Issued: ${cert.issueDate}</p>
+                        <a href="${cert.certificateUrl}" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 font-semibold hover:text-sky-800 dark:hover:text-sky-200 transition duration-300">View Credential &rarr;</a>
+                    `;
+                    certificationsGrid.appendChild(certCard);
+                });
+            };
+
+
+            // Project Data
+            const projects = [
+                {
+                    id: 1,
+                    title: ' TravelSphere – Travel and Tourism Management System',
+                    short_desc: 'A Java-based travel management system with user authentication, package booking, and hotel reservation features using Swing and MySQL.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=E-commerce',
+                    motivation: 'To build a full-featured desktop system for streamlining travel and hotel bookings using core Java concepts and database integration.',
+                    process: 'Designed and built the GUI using Java Swing and AWT. Implemented JDBC connectivity to perform operations on MySQL database. Integrated user authentication, package booking, and profile management features.',
+                    technologies: ['Java', 'Swing', 'AWT', 'JDBC', 'MySQL'],
+                    challenges: 'Managing multiple screens and user states within Swing while maintaining modular code. Ensuring reliable database operations and validating user inputs across forms.',
+                    live_link: '#',
+                    github_link: 'https://github.com/Abhinavan2004/Travel_and_Tourism_Management'
+                },
+                {
+                    id: 2,
+                    title: 'Developing Secure Solutions for CPS in Healthcare Applications (Ongoing)',
+                    short_desc: 'A hybrid Spring Boot + Kotlin-based prototype ensuring secure data flow in healthcare CPS using Arduino sensors and PostgreSQL.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=Healthcare+CPS',
+                    motivation: 'To address privacy and integrity concerns in healthcare CPS by building a secure architecture capable of withstanding cyber threats and ensuring safe data transmission.',
+                    process: 'Designed a CPS prototype integrating Arduino sensors with Kotlin apps for data collection, routed to a secure Spring Boot backend. Simulated attack vectors to test authentication, encryption, and access control layers.',
+                    technologies: ['Java', 'Spring Boot', 'Kotlin', 'PostgreSQL', 'PgAdmin', 'Google Cloud Platform', 'Arduino'],
+                    challenges: 'Ensuring end-to-end data security under real-time conditions, bridging IoT hardware with cloud-connected software layers, and implementing threat simulations for validation.',
+                    live_link: '#',
+                    github_link: 'https://github.com/Abhinavan2004/Ensuring-Securing-in-CPS-for-Healthcare-Applications'
+                },
+                {
+                    id: 3,
+                    title: 'NeXoraa – Real-Time Video & Chat Application',
+                    short_desc: 'A full-stack MERN app with JWT-authentication, video calling, messaging, and a responsive React UI using Tailwind CSS.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=NeXoraa+App',
+                    motivation: 'To create an all-in-one communication platform with real-time video, chat, and notifications, while ensuring secure and scalable architecture.',
+                    process: 'Developed user authentication with JWT, implemented one-to-one video calling using Stream Video SDK, and built a friend request + messaging system. Styled the frontend using Tailwind CSS and DaisyUI with React Router for navigation.',
+                    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Stream Video SDK', 'Tailwind CSS', 'DaisyUI'],
+                    challenges: 'Integrating secure real-time video calls while maintaining UI responsiveness and ensuring seamless state management across authentication and messaging modules.',
+                    live_link: '#',
+                    github_link: 'https://www.github.com/Abhinavan2004/NeXoraa'
+                },
+                {
+                    id: 4,
+                    title: 'TaskMate – Java-Based Desktop Task Manager',
+                    short_desc: 'A Java Swing-based desktop application for task scheduling and productivity tracking with MySQL backend.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=TaskMate+App',
+                    motivation: 'To streamline personal productivity by building an offline task management tool with CRUD operations and persistent storage.',
+                    process: 'Built the GUI using Java Swing, implemented task creation, deadline tracking, and status updates. Connected to MySQL database for secure and persistent data handling with JDBC.',
+                    technologies: ['Java', 'Swing', 'Bootstrap CSS', 'MySQL', 'JDBC', 'XAMPP'],
+                    challenges: 'Designing a user-friendly and responsive GUI in Swing while ensuring real-time database sync and error-free data validation.',
+                    live_link: '#',
+                    github_link: 'https://github.com/Abhinavan2004/TaskMate-Java'
+                },
+                {
+                    id: 5,
+                    title: "Secret Message Encoder – Text Encryption App",
+                    short_desc: "A simple Java application that encodes and decodes secret messages using basic encryption logic.",
+                    image: "https://placehold.co/600x400/E2E8F0/4A5568?text=Secret+Message+Encoder",
+                    motivation: "To explore basic encryption techniques and build a fun tool for encoding personal messages securely.",
+                    process: "Developed a console-based Java program that allows users to input a message, apply a shift-based encoding (similar to Caesar cipher), and decode it back. Focused on clean logic, user input handling, and readable structure.",
+                    technologies: ["Java", "OOP", "CLI"],
+                    challenges: "Implementing error-free encoding/decoding logic while preserving character casing and ignoring special characters.",
+                    live_link: "#",
+                    github_link: "https://github.com/Abhinavan2004/Secret-Message-Encoder"
+                },
+                {
+                    id: 6,
+                    title: "AI Code Reviewer – Gemini-Powered Full-Stack Code Feedback Platform",
+                    short_desc: "A full-stack MERN application that integrates Gemini AI API to analyze and review code in real-time.",
+                    image: "https://placehold.co/600x400/E2E8F0/4A5568?text=AI+Code+Reviewer",
+                    motivation: "To assist developers with intelligent, AI-powered code feedback during the development lifecycle.",
+                    process: "Developed using React.js for the frontend with intuitive UI and syntax highlighting. Backend built with Node.js and Express.js to handle API requests and securely interact with Gemini AI API.",
+                    technologies: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Gemini AI API"],
+                    challenges: "Ensuring accurate code parsing and review consistency across various languages while maintaining responsiveness and data privacy.",
+                    live_link: "#",
+                    github_link: "https://github.com/Abhinavan2004/AI-Code-Reviewer"
+                }
+
+
+            ];
+
+            // Populate Projects Grid
+            const projectsGrid = document.getElementById('projects-grid');
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'bg-slate-50 dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300';
+                projectCard.innerHTML = `
                     <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2 text-slate-800 dark:text-slate-100">${project.title}</h3>
@@ -834,18 +824,18 @@
                         <button data-project-id="${project.id}" class="view-project-btn text-sky-600 dark:text-sky-400 font-semibold hover:text-sky-800 dark:hover:text-sky-200 transition duration-300">View Details &rarr;</button>
                     </div>
                 `;
-                    projectsGrid.appendChild(projectCard);
-                });
+                projectsGrid.appendChild(projectCard);
+            });
 
-                // Project Modal Logic
-                const modal = document.getElementById('project-modal');
-                const modalContentWrapper = document.getElementById('modal-content-wrapper');
+            // Project Modal Logic
+            const modal = document.getElementById('project-modal');
+            const modalContentWrapper = document.getElementById('modal-content-wrapper');
 
-                const openModal = (projectId) => {
-                    const project = projects.find(p => p.id == projectId);
-                    if (!project) return;
+            const openModal = (projectId) => {
+                const project = projects.find(p => p.id == projectId);
+                if (!project) return;
 
-                    modalContentWrapper.innerHTML = `
+                modalContentWrapper.innerHTML = `
                     <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 text-3xl font-bold">&times;</button>
                     <div class="p-6 md:p-8">
                         <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover rounded-lg mb-6">
@@ -874,33 +864,31 @@
                         </div>
                     </div>
                 `;
-                    modal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
 
-                    document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-                };
+                document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+            };
 
-                const closeModal = () => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                };
+            const closeModal = () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
 
-                document.querySelectorAll('.view-project-btn').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        openModal(e.target.dataset.projectId);
-                    });
+            document.querySelectorAll('.view-project-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    openModal(e.target.dataset.projectId);
                 });
+            });
 
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal();
-                    }
-                });
+            // Contact Form Submission
+            const contactForm = document.getElementById('contact-form');
+            const formSuccessMessage = document.getElementById('form-success');
 
-                // Contact Form Submission
-                const contactForm = document.getElementById('contact-form');
-                const formSuccessMessage = document.getElementById('form-success');
-
+            // I'm uncommenting the contact form section here based on your original HTML
+            // If you truly don't want a contact form, you can remove this section in your HTML
+            // and remove the associated JavaScript here.
+            if (contactForm) {
                 contactForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     // In a real MERN app, this would be a fetch() call to the backend API.
@@ -911,25 +899,30 @@
                         formSuccessMessage.classList.add('hidden');
                     }, 5000);
                 });
+            }
 
-                // Scroll-to-top button visibility
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) { // Show button after scrolling 300px
-                        scrollToTopBtn.classList.remove('hidden');
-                    } else {
-                        scrollToTopBtn.classList.add('hidden');
-                    }
-                });
 
-                // Scroll-to-top functionality
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+            // Scroll-to-top button visibility
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Show button after scrolling 300px
+                    scrollToTopBtn.classList.remove('hidden');
+                } else {
+                    scrollToTopBtn.classList.add('hidden');
+                }
+            });
+
+            // Scroll-to-top functionality
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
-        </script>
+
+            // Call generateCertifications to populate the section on load
+            generateCertifications();
+        });
+    </script>
 </body>
 
 </html>
