@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Anpan - Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            /* slate-50 */
+            color: #0f172a;
+            /* slate-900 */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: #0f172a;
+            /* slate-900 */
+            color: #f1f5f9;
+            /* slate-50 */
+        }
+
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 40;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .badge {
+            background-color: #e2e8f0;
+            /* slate-200 */
+            color: #334155;
+            /* slate-700 */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .dark .badge {
+            background-color: #475569;
+            /* slate-600 */
+            color: #e2e8f0;
+            /* slate-200 */
+        }
+
+        .badge:hover {
+            background-color: #0ea5e9;
+            /* slate-500 */
+            color: #ffffff;
+        }
+
+        .dark .badge:hover {
+            background-color: #0284c7;
+            /* slate-600 */
+            color: #f0f9ff;
+            /* slate-50 */
+        }
+
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Dark mode specific styles */
+        .dark .bg-slate-50 {
+            background-color: #0f172a;
+        }
+
+        .dark .bg-slate-50\/80 {
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+
+        .dark .border-slate-200 {
+            border-color: #334155;
+        }
+
+        .dark .text-slate-900 {
+            color: #f1f5f9;
+        }
+
+        .dark .text-slate-600 {
+            color: #94a3b8;
+        }
+
+        .dark .bg-white {
+            background-color: #1e293b;
+        }
+
+        .dark .bg-slate-100 {
+            background-color: #1e293b;
+        }
+
+        .dark .bg-slate-200 {
+            background-color: #334155;
+        }
+
+        .dark .text-slate-700 {
+            color: #94a3b8;
+        }
+
+        .dark .text-slate-500 {
+            color: #64748b;
+        }
+
+        .dark .bg-slate-300 {
+            background-color: #334155;
+        }
+
+        .dark .border-slate-300 {
+            border-color: #334155;
+        }
+
+        .dark .bg-slate-700 {
+            background-color: #475569;
+        }
+
+        .dark .bg-slate-800 {
+            background-color: #0f172a;
+        }
+
+        .dark .text-slate-300 {
+            color: #94a3b8;
+        }
+
+        .dark .bg-slate-100 {
+            background-color: #0c4a6e;
+        }
+
+        .dark .text-slate-800 {
+            color: #e0f2fe;
+        }
+
+        .dark .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
+        }
+
+        .dark .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.18);
+        }
+
+        .dark .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.18);
+        }
+
+        .dark .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <header id="header"
+        class="bg-slate-100/80 backdrop-blur-md fixed top-0 left-0 right-0 z-30 border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-slate-800">A<sup>2</sup></a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-slate-600 hover:text-sky-600 transition duration-300">About</a>
+                <a href="#education" class="text-slate-600 hover:text-sky-600 transition duration-300">Education</a>
+                <a href="#skills" class="text-slate-600 hover:text-sky-600 transition duration-300">Skills</a>
+                <a href="#experience" class="text-slate-600 hover:text-sky-600 transition duration-300">Experience</a>
+                <a href="#projects" class="text-slate-600 hover:text-sky-600 transition duration-300">Projects</a>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 hover:scale-105 transition-transform duration-200">
+                    <svg id="sun-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3A.75.75 0 0112 2.25zM12 19.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM18 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5h-2.25A.75.75 0 0118 12zM6.31 6.31a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 01-1.06 1.06L6.31 6.31zM16.94 16.94a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 01-1.06 1.06l-1.59-1.59zM16.94 6.31a.75.75 0 01-1.06 1.06l-1.59-1.59a.75.75 0 011.06-1.06l1.59 1.59zM6.31 16.94a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 01-1.06 1.06l-1.59-1.59zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z" />
+                    </svg>
+                    <svg id="moon-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.525 3.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM12 6a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V6.75A.75.75 0 0112 6zM14.475 3.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM17.25 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM20.25 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM22.5 12a.75.75 0 01-.75.75H19.5a.75.75 0 010-1.5h2.25A.75.75 0 0122.5 12zM9.525 20.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM14.475 20.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM6.75 12a.75.75 0 01-.75.75H3.75a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM3 12a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h2.25A.75.75 0 013 12zM5.25 12a.75.75 0 01-.75.75H2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM12 9a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V9.75A.75.75 0 0112 9zM12 12a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V12.75A.75.75 0 0112 12zM12 14.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75z" />
+                    </svg>
+                </button>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800 dark:text-slate-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-100 dark:bg-slate-900">
+            <a href="#about"
+                class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">About</a>
+            <a href="#education"
+                class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">Education</a>
+            <a href="#skills"
+                class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">Skills</a>
+            <a href="#experience"
+                class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">Experience</a>
+            <a href="#projects"
+                class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">Projects</a>
+            <a href="#contact"
+                class="block py-2 px-6 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home"
+            class="min-h-screen flex items-center bg-slate-100 dark:bg-slate-900 transition-colors duration-300 mt-10">
+            <div class="container mx-auto px-6 py-20 flex flex-col items-center text-center">
+                <div class="mb-10 animate-fade-in-up delay-400">
+                    <div
+                        class="w-32 h-32 md:w-52 md:h-52 rounded-full overflow-hidden shadow-2xl bg-slate-300 dark:bg-slate-700 transform hover:scale-105 transition-transform duration-300 mx-auto">
+                        <img src="./IMG_20240323_201749.jpg" alt="Abhinav Anpan" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="max-w-xl">
+                    <h1
+                        class="text-5xl md:text-7xl font-bold text-slate-800 dark:text-slate-100 mb-4 animate-fade-in-up">
+                        Abhinav Anpan</h1>
+                    <p class="text-xl md:text-2xl text-sky-700 font-medium mb-6 animate-fade-in-up delay-100">MERN &
+                        Java Developer | Passionate About Building Scalable Cloud Apps
+
+                    </p>
+                    <div class="mt-8 flex justify-center space-x-4 animate-fade-in-up delay-300">
+                        <a href="#projects"
+                            class="bg-sky-600 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-sky-700 transition duration-300 transform hover:scale-105 shadow-lg">View
+                            My Work</a>
+                        <a href="mailto:abhinavanpan@gmail.com"
+                            class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-md text-lg font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition duration-300 transform hover:scale-105 shadow-lg">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">About Me</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">A brief introduction to my professional
+                    journey and values.</p>
+                <div class="max-w-4xl mx-auto text-lg text-slate-600 dark:text-slate-300 text-center leading-relaxed">
+                    <p>Passionate Full-Stack Web Developer with a strong focus on creating user-centered and scalable
+                        web
+                        applications. Committed to writing clean, maintainable code and solving complex problems through
+                        efficient development
+                        practices. Quick to adapt to new technologies and thrive in both independent and collaborative
+                        Agile environments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education"
+            class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Education</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">My academic background and
+                    qualifications.</p>
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="absolute left-1/2 w-0.5 h-full bg-slate-300 dark:bg-slate-700"></div>
+                    <div class="mb-8 flex justify-between items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div
+                            class="z-10 flex items-center order-1 bg-sky-600 shadow-xl w-8 h-8 rounded-full transform hover:scale-110 transition-transform duration-300">
+                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                        </div>
+                        <div
+                            class="order-1 bg-white dark:bg-slate-800 rounded-lg shadow-xl w-5/12 px-6 py-4 transform hover:-translate-y-1 transition-transform duration-300">
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xl">Bachelor of Technology
+                            </h3>
+                            <p class="text-sm font-medium text-sky-600">Information Technology | 2022 - 2026</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-300">Shri Ramdeobaba College of Engineering
+                                and Management, Nagpur</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div
+                            class="z-10 flex items-center order-1 bg-sky-600 shadow-xl w-8 h-8 rounded-full transform hover:scale-110 transition-transform duration-300">
+                            <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                        </div>
+                        <div
+                            class="order-1 bg-white dark:bg-slate-800 rounded-lg shadow-xl w-5/12 px-6 py-4 transform hover:-translate-y-1 transition-transform duration-300">
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Senior Secondary (12th)
+                            </h3>
+                            <p class="text-sm font-medium text-sky-600">Science Stream | 2022</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-300">Maharishi Public School</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div
+                            class="z-10 flex items-center order-1 bg-sky-600 shadow-xl w-8 h-8 rounded-full transform hover:scale-110 transition-transform duration-300">
+                            <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                        </div>
+                        <div
+                            class="order-1 bg-white dark:bg-slate-800 rounded-lg shadow-xl w-5/12 px-6 py-4 transform hover:-translate-y-1 transition-transform duration-300">
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Secondary (10th)</h3>
+                            <p class="text-sm font-medium text-sky-600">2020</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-300">Little World School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">My Tech Stack</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">Technologies and tools I use to build
+                    things.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div
+                        class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Frontend</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="badge">HTML</span>
+                            <span class="badge">CSS</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">React.js</span>
+                            <span class="badge">Tailwind CSS</span>
+                            <span class="badge">Java AWT</span>
+                            <span class="badge">Java Swing</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Backend</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="badge">Node.js</span>
+                            <span class="badge">Express.js</span>
+                            <span class="badge">Java</span>
+                            <span class="badge">Servlets</span>
+                            <span class="badge">JSP</span>
+                            <span class="badge">JDBC</span>
+                            <span class="badge">SQL</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Databases & Cloud</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="badge">MongoDB</span>
+                            <span class="badge">MySQL</span>
+                            <span class="badge">AWS</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Proficiencies</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="badge">OOPS</span>
+                            <span class="badge">DBMS</span>
+                            <span class="badge">Computer Networks (CN)</span>
+                            <span class="badge">Operating Systems (OS)</span>
+
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Laguages</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="badge">Java</span>
+                            <span class="badge">C</span>
+                            <span class="badge">SQL</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-50 dark:bg-slate-700 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-sky-700 dark:text-sky-400">Tools & Platforms</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="badge">Git & GitHub</span>
+                            <span class="badge">VS Code</span>
+                            <span class="badge">Postman</span>
+                            <span class="badge">WordPress</span>
+                            <span class="badge">Jira</span>
+                            <span class="badge">Render</span>
+                            <span class="badge">Netlify</span>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section id="experience"
+            class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Experience</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">My professional work history.</p>
+                <div class="max-w-3xl mx-auto space-y-8">
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Wordpress Developer Intern
+                            </h3>
+                            <span
+                                class="bg-sky-100 dark:bg-sky-800 text-sky-800 dark:text-sky-200 text-sm font-medium px-3 py-1 rounded-full">June
+                                2024 - Sept 2024</span>
+                        </div>
+                        <p class="text-lg font-medium text-sky-600 dark:text-sky-400 mb-2">Youniformwala</p>
+                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-2">
+                            <li>Developed a custom WordPress site from scratch, including theme and plugin development,
+                                reducing page load time by 35%</li>
+                            <li>Implemented responsive UI components using HTML, CSS, JS & PHP, achieving 100% mobile
+                                compatibility across devices.</li>
+                            <li>Optimized website for SEO, increasing Google PageSpeed score from 65 to 92, improving
+                                organic visibility.</li>
+                            <li>Integrated AWS for hosting and deployment, enhancing site uptime and scalability</li>
+
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">THM </h3>
+                            <span
+                                class="bg-sky-100 dark:bg-sky-800 text-sky-800 dark:text-sky-200 text-sm font-medium px-3 py-1 rounded-full">Summer
+                                2021</span>
+                        </div>
+                        <p class="text-lg font-medium text-sky-600 dark:text-sky-400 mb-2">Creative Web Agency</p>
+                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-2">
+                            <li>Translated Figma designs into responsive, pixel-perfect web pages using React and
+                                Tailwind CSS.</li>
+                            <li>Assisted in developing a component library, which accelerated future project development
+                                by 20%.</li>
+                            <li>Participated in code reviews and learned best practices for writing clean and
+                                maintainable code.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Projects</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">A selection of my work. Click to learn
+                    more.</p>
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+            </div>
+        </section>
+
+        <section id="certifications"
+            class="py-20 bg-stone-100 dark:bg-stone-900 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-stone-800 dark:text-stone-100">Certifications</h2>
+                <p class="text-center text-stone-500 dark:text-stone-400 mb-12">Professional certifications and
+                    achievements that validate my skills.</p>
+
+                <div id="certificationsGrid"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    </div>
+            </div>
+        </section>
+
+        <section id="platforms"
+            class="py-20 bg-slate-100 dark:bg-slate-900 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Find Me Online</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">Check out my profiles on these
+                    platforms.</p>
+                <div class="flex justify-center items-center flex-wrap gap-8">
+                    <a href="https://leetcode.com/u/Abhinavv04/"
+                        class="flex items-center space-x-2 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 transform hover:scale-105">
+                        <span class="text-2xl font-bold">LeetCode</span>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/abhinavanpan"
+                        class="flex items-center space-x-2 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 transform hover:scale-105">
+                        <span class="text-2xl font-bold">HackerRank</span>
+                    </a>
+                    <a href="https://github.in/Abhinavan2004"
+                        class="flex items-center space-x-2 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 transform hover:scale-105">
+                        <span class="text-2xl font-bold">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhinav-anpan/"
+                        class="flex items-center space-x-2 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 transform hover:scale-105">
+                        <span class="text-2xl font-bold">LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="contact" class="py-20 bg-white dark:bg-slate-800 section-fade-in transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-2 text-slate-800 dark:text-slate-100">Get In Touch</h2>
+                <p class="text-center text-slate-500 dark:text-slate-400 mb-12">Have a project in mind or just want to
+                    say hi? Feel free to reach out.</p>
+                <div class="max-w-2xl mx-auto">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Name</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-800 dark:text-slate-100">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Email</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-800 dark:text-slate-100">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-200">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-800 dark:text-slate-100"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transform hover:scale-105 transition-transform duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form> -->
+                    <!-- <div id="form-success"
+                        class="hidden mt-6 text-center p-4 bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 rounded-md">
+                        Thank you for your message! I'll get back to you soon.
+                    </div> -->
+                <!-- </div>
+            </div>
+        </section> -->
+    </main>
+
+    <div id="project-modal" class="modal-backdrop">
+        <div id="modal-content-wrapper"
+            class="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-11/12 max-w-4xl relative modal-content text-slate-800 dark:text-slate-100">
+            </div>
+    </div>
+
+    <button id="scroll-to-top-btn"
+        class="fixed bottom-8 right-8 bg-sky-600 text-white p-3 rounded-full shadow-lg hidden hover:bg-sky-700 transition-colors duration-300 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+            </path>
+        </svg>
+    </button>
+
+    <footer
+        class="bg-slate-800 dark:bg-slate-950 text-slate-300 dark:text-slate-400 py-6 transition-colors duration-300">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Abhinav Anpan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlElement = document.documentElement;
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+            // Initialize theme from localStorage or default to light
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                htmlElement.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                document.body.classList.add('dark'); // Apply dark class to body for direct styling
+            } else {
+                htmlElement.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                document.body.classList.remove('dark'); // Ensure body is not dark
+            }
+
+            // Theme toggle functionality
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                document.body.classList.toggle('dark'); // Toggle dark class on body
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            });
+
+            // Mobile Menu Toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Intersection Observer for section fade-in animations
+            const sections = document.querySelectorAll('.section-fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            const certificationsData = [
+               {
+    title: "Postman API Fundamentals Student Expert",
+    issuer: "Postman",
+    description: "Demonstrated expertise in API fundamentals including requests, collections, environment variables, and automated testing using Postman.",
+    issueDate: "July 2025",
+    certificateUrl: "https://drive.google.com/file/d/1Y1nwsTwafJQW0ZvUNX2FmohLM67fDftO/view?usp=sharing",
+    iconColor: "teal"
+},
+
+                {
+    title: "React Basics",
+    issuer: "Meta (via Coursera)",
+    description: "Gained foundational knowledge of building interactive user interfaces using React, including components, props, state management, and JSX.",
+    issueDate: "Oct 2024",
+    certificateUrl: "https://drive.google.com/file/d/1kSh6KvAbqBsf2J_lHfj0_gXwzfbpZFFd/view?usp=sharing",
+    iconColor: "blue"
+}
+,
+                {
+title: "Networking Basics",
+    issuer: "Cisco (via Cisco Networking Academy)",
+    description: "Learned core networking concepts such as IP addressing, subnetting, protocols, OSI model, and basic network configuration and troubleshooting.",
+    issueDate: "Dec 2024",
+    certificateUrl: "https://drive.google.com/file/d/1dYjFyL2NTCZ_uusum2N2M-KatK4dRUu8/view?usp=sharing",
+    iconColor: "red"
+}
+,
+               {
+    title: "Introduction to Git & GitHub",
+    issuer: "Google (via Coursera)",
+    description: "Gained hands-on experience with version control using Git and GitHub, including branching, pull requests, commits, and repository collaboration.",
+    issueDate: "July 2025",
+    certificateUrl: "https://drive.google.com/file/d/1kXU-zHojciYJ-Suwde3H8efc4nshNy2c/view?usp=sharing",
+    iconColor: "blue"
+}
+,
+                {
+    title: "AWS Solutions Architecture Virtual Experience Program",
+    issuer: "Amazon Web Services (via Forage)",
+    description: "Completed a job simulation involving real-world tasks such as designing scalable cloud architectures, evaluating AWS services, and proposing secure and cost-effective cloud solutions.",
+    issueDate: "July 2025",
+    certificateUrl: "#",
+    iconColor: "orange"
+}
+
+            ];
+
+            // Function to generate certification cards
+            const generateCertifications = () => {
+                const certificationsGrid = document.getElementById('certificationsGrid');
+                certificationsGrid.innerHTML = ''; // Clear existing content
+
+                certificationsData.forEach(cert => {
+                    const certCard = document.createElement('div');
+                    certCard.className = `bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300`;
+                    certCard.innerHTML = `
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-${cert.iconColor}-100 dark:bg-${cert.iconColor}-900 flex items-center justify-center mr-4">
+                                <span class="text-${cert.iconColor}-600 dark:text-${cert.iconColor}-200 text-2xl font-bold">&#x2713;</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">${cert.title}</h3>
+                                <p class="text-sky-600 dark:text-sky-400 text-sm">${cert.issuer}</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 mb-4">${cert.description}</p>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Issued: ${cert.issueDate}</p>
+                        <a href="${cert.certificateUrl}" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 font-semibold hover:text-sky-800 dark:hover:text-sky-200 transition duration-300">View Credential &rarr;</a>
+                    `;
+                    certificationsGrid.appendChild(certCard);
+                });
+            };
+
+
+            // Project Data
+            const projects = [
+                {
+                    id: 1,
+                    title: ' TravelSphere – Travel and Tourism Management System',
+                    short_desc: 'A Java-based travel management system with user authentication, package booking, and hotel reservation features using Swing and MySQL.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=E-commerce',
+                    motivation: 'To build a full-featured desktop system for streamlining travel and hotel bookings using core Java concepts and database integration.',
+                    process: 'Designed and built the GUI using Java Swing and AWT. Implemented JDBC connectivity to perform operations on MySQL database. Integrated user authentication, package booking, and profile management features.',
+                    technologies: ['Java', 'Swing', 'AWT', 'JDBC', 'MySQL'],
+                    challenges: 'Managing multiple screens and user states within Swing while maintaining modular code. Ensuring reliable database operations and validating user inputs across forms.',
+                    live_link: '#',
+                    github_link: 'https://github.com/Abhinavan2004/Travel_and_Tourism_Management'
+                },
+                {
+                    id: 2,
+                    title: 'Developing Secure Solutions for CPS in Healthcare Applications (Ongoing)',
+                    short_desc: 'A hybrid Spring Boot + Kotlin-based prototype ensuring secure data flow in healthcare CPS using Arduino sensors and PostgreSQL.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=Healthcare+CPS',
+                    motivation: 'To address privacy and integrity concerns in healthcare CPS by building a secure architecture capable of withstanding cyber threats and ensuring safe data transmission.',
+                    process: 'Designed a CPS prototype integrating Arduino sensors with Kotlin apps for data collection, routed to a secure Spring Boot backend. Simulated attack vectors to test authentication, encryption, and access control layers.',
+                    technologies: ['Java', 'Spring Boot', 'Kotlin', 'PostgreSQL', 'PgAdmin', 'Google Cloud Platform', 'Arduino'],
+                    challenges: 'Ensuring end-to-end data security under real-time conditions, bridging IoT hardware with cloud-connected software layers, and implementing threat simulations for validation.',
+                    live_link: '#',
+                    github_link: 'https://github.com/Abhinavan2004/Ensuring-Securing-in-CPS-for-Healthcare-Applications'
+                },
+                {
+                    id: 3,
+                    title: 'NeXoraa – Real-Time Video & Chat Application',
+                    short_desc: 'A full-stack MERN app with JWT-authentication, video calling, messaging, and a responsive React UI using Tailwind CSS.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=NeXoraa+App',
+                    motivation: 'To create an all-in-one communication platform with real-time video, chat, and notifications, while ensuring secure and scalable architecture.',
+                    process: 'Developed user authentication with JWT, implemented one-to-one video calling using Stream Video SDK, and built a friend request + messaging system. Styled the frontend using Tailwind CSS and DaisyUI with React Router for navigation.',
+                    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Stream Video SDK', 'Tailwind CSS', 'DaisyUI'],
+                    challenges: 'Integrating secure real-time video calls while maintaining UI responsiveness and ensuring seamless state management across authentication and messaging modules.',
+                    live_link: '#',
+                    github_link: 'https://www.github.com/Abhinavan2004/NeXoraa'
+                },
+                {
+                    id: 4,
+                    title: 'TaskMate – Java-Based Desktop Task Manager',
+                    short_desc: 'A Java Swing-based desktop application for task scheduling and productivity tracking with MySQL backend.',
+                    image: 'https://placehold.co/600x400/E2E8F0/4A5568?text=TaskMate+App',
+                    motivation: 'To streamline personal productivity by building an offline task management tool with CRUD operations and persistent storage.',
+                    process: 'Built the GUI using Java Swing, implemented task creation, deadline tracking, and status updates. Connected to MySQL database for secure and persistent data handling with JDBC.',
+                    technologies: ['Java', 'Swing', 'Bootstrap CSS', 'MySQL', 'JDBC', 'XAMPP'],
+                    challenges: 'Designing a user-friendly and responsive GUI in Swing while ensuring real-time database sync and error-free data validation.',
+                    live_link: '#',
+                    github_link: 'https://github.com/Abhinavan2004/TaskMate-Java'
+                },
+                {
+                    id: 5,
+                    title: "Secret Message Encoder – Text Encryption App",
+                    short_desc: "A simple Java application that encodes and decodes secret messages using basic encryption logic.",
+                    image: "https://placehold.co/600x400/E2E8F0/4A5568?text=Secret+Message+Encoder",
+                    motivation: "To explore basic encryption techniques and build a fun tool for encoding personal messages securely.",
+                    process: "Developed a console-based Java program that allows users to input a message, apply a shift-based encoding (similar to Caesar cipher), and decode it back. Focused on clean logic, user input handling, and readable structure.",
+                    technologies: ["Java", "OOP", "CLI"],
+                    challenges: "Implementing error-free encoding/decoding logic while preserving character casing and ignoring special characters.",
+                    live_link: "#",
+                    github_link: "https://github.com/Abhinavan2004/Secret-Message-Encoder"
+                },
+                {
+                    id: 6,
+                    title: "AI Code Reviewer – Gemini-Powered Full-Stack Code Feedback Platform",
+                    short_desc: "A full-stack MERN application that integrates Gemini AI API to analyze and review code in real-time.",
+                    image: "https://placehold.co/600x400/E2E8F0/4A5568?text=AI+Code+Reviewer",
+                    motivation: "To assist developers with intelligent, AI-powered code feedback during the development lifecycle.",
+                    process: "Developed using React.js for the frontend with intuitive UI and syntax highlighting. Backend built with Node.js and Express.js to handle API requests and securely interact with Gemini AI API.",
+                    technologies: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Gemini AI API"],
+                    challenges: "Ensuring accurate code parsing and review consistency across various languages while maintaining responsiveness and data privacy.",
+                    live_link: "#",
+                    github_link: "https://github.com/Abhinavan2004/AI-Code-Reviewer"
+                }
+
+
+            ];
+
+            // Populate Projects Grid
+            const projectsGrid = document.getElementById('projects-grid');
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'bg-slate-50 dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300';
+                projectCard.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-800 dark:text-slate-100">${project.title}</h3>
+                        <p class="text-slate-600 dark:text-slate-300 mb-4">${project.short_desc}</p>
+                        <button data-project-id="${project.id}" class="view-project-btn text-sky-600 dark:text-sky-400 font-semibold hover:text-sky-800 dark:hover:text-sky-200 transition duration-300">View Details &rarr;</button>
+                    </div>
+                `;
+                projectsGrid.appendChild(projectCard);
+            });
+
+            // Project Modal Logic
+            const modal = document.getElementById('project-modal');
+            const modalContentWrapper = document.getElementById('modal-content-wrapper');
+
+            const openModal = (projectId) => {
+                const project = projects.find(p => p.id == projectId);
+                if (!project) return;
+
+                modalContentWrapper.innerHTML = `
+                    <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 text-3xl font-bold">&times;</button>
+                    <div class="p-6 md:p-8">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover rounded-lg mb-6">
+                        <h2 class="text-3xl font-bold mb-4 text-slate-800 dark:text-slate-100">${project.title}</h2>
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2 text-sky-700 dark:text-sky-400">Motivation</h4>
+                            <p class="text-slate-600 dark:text-slate-300">${project.motivation}</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2 text-sky-700 dark:text-sky-400">Development Process</h4>
+                            <p class="text-slate-600 dark:text-slate-300">${project.process}</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2 text-sky-700 dark:text-sky-400">Challenges & Solutions</h4>
+                            <p class="text-slate-600 dark:text-slate-300">${project.challenges}</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2 text-sky-700 dark:text-sky-400">Technologies Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${project.technologies.map(tech => `<span class="bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200 px-3 py-1 rounded-full text-sm font-medium">${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="flex space-x-4 mt-8">
+                            <a href="${project.live_link}" target="_blank" class="bg-sky-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-sky-700 transition duration-300 transform hover:scale-105">Live Demo</a>
+                            <a href="${project.github_link}" target="_blank" class="bg-slate-700 dark:bg-slate-600 text-white dark:text-slate-100 px-6 py-2 rounded-md font-semibold hover:bg-slate-800 dark:hover:bg-slate-500 transition duration-300 transform hover:scale-105">GitHub Repo</a>
+                        </div>
+                    </div>
+                `;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+
+                document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+            };
+
+            const closeModal = () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+
+            document.querySelectorAll('.view-project-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    openModal(e.target.dataset.projectId);
+                });
+            });
+
+            // Contact Form Submission
+            const contactForm = document.getElementById('contact-form');
+            const formSuccessMessage = document.getElementById('form-success');
+
+            // I'm uncommenting the contact form section here based on your original HTML
+            // If you truly don't want a contact form, you can remove this section in your HTML
+            // and remove the associated JavaScript here.
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // In a real MERN app, this would be a fetch() call to the backend API.
+                    // Here, we simulate the success response.
+                    contactForm.reset();
+                    formSuccessMessage.classList.remove('hidden');
+                    setTimeout(() => {
+                        formSuccessMessage.classList.add('hidden');
+                    }, 5000);
+                });
+            }
+
+
+            // Scroll-to-top button visibility
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Show button after scrolling 300px
+                    scrollToTopBtn.classList.remove('hidden');
+                } else {
+                    scrollToTopBtn.classList.add('hidden');
+                }
+            });
+
+            // Scroll-to-top functionality
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Call generateCertifications to populate the section on load
+            generateCertifications();
+        });
+    </script>
+</body>
+
+</html>
